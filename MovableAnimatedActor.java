@@ -8,6 +8,8 @@ public class MovableAnimatedActor extends AnimatedActor
     private Animation idleLeft;
     private Animation fallRight;
     private Animation fallLeft;
+    private Animation jumpRight;
+    private Animation jumpLeft;
     private String currentAction;
     private String direction;
     
@@ -37,6 +39,14 @@ public class MovableAnimatedActor extends AnimatedActor
     
     public void setFallLeftAnimation(Animation ani) {
         fallLeft = ani;
+    }
+    
+    public void setJumpRightAnimation(Animation ani) {
+        jumpRight = ani;
+    }
+    
+    public void setJumpLeftAnimation(Animation ani) {
+        jumpLeft = ani;
     }
     
     public void setIdleAnimation(Animation ani) {
@@ -96,6 +106,15 @@ public class MovableAnimatedActor extends AnimatedActor
                 }
             }
         }
+        if (Mayflower.isKeyDown(Keyboard.KEY_UP)) {
+            if (direction.equals("right")) {
+                newAction = "jumpRight";
+            }
+            if (direction.equals("left")) {
+                newAction = "jumpLeft";
+            }
+            jump();
+        }
         
         if ((newAction != null) && !(newAction.equals(currentAction))) {
             if (newAction.equals("idle")) {
@@ -115,6 +134,12 @@ public class MovableAnimatedActor extends AnimatedActor
             }
             if (newAction.equals("fallLeft")) {
                 setAnimation(fallLeft);
+            }
+            if (newAction.equals("jumpRight")) {
+                setAnimation(jumpRight);
+            }
+            if (newAction.equals("jumpLeft")) {
+                setAnimation(jumpLeft);
             }
             currentAction = newAction;
         }

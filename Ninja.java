@@ -10,6 +10,8 @@ public class Ninja extends MovableAnimatedActor
     private Animation idleLeft;
     private Animation fallRight;
     private Animation fallLeft;
+    private Animation jumpRight;
+    private Animation jumpLeft;
     
     public Ninja()
     {
@@ -69,6 +71,23 @@ public class Ninja extends MovableAnimatedActor
         //fallLeft.setBounds(21, 5, 25, 50);
         
         super.setFallLeftAnimation(fallLeft);
+        
+        
+        String[] files3 = new String[10];
+        for (int i = 0; i < files3.length; i++) {
+            files3[i] = "img/ninjagirl/Jump__00" + (i) + ".png";
+        }
+        
+        jumpRight = new Animation(50, files3);
+        jumpRight.scale(87, 100);
+        
+        super.setJumpRightAnimation(jumpRight);
+        
+        jumpLeft = new Animation(50, files3);
+        jumpLeft.scale(87, 100);
+        jumpLeft.mirrorHorizontally();
+        
+        super.setJumpLeftAnimation(jumpLeft);
     }
     
     public void act()
