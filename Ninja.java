@@ -13,6 +13,9 @@ public class Ninja extends MovableAnimatedActor
     private Animation jumpRight;
     private Animation jumpLeft;
     
+    private int score = 0;
+    private int lives = 3;
+    
     public Ninja()
     {
         String[] fileNames = new String[10];
@@ -22,7 +25,6 @@ public class Ninja extends MovableAnimatedActor
         
         walkRight = new Animation(50, fileNames);
         walkRight.scale(75, 100);
-        //walkRight.setBounds(14, 5, 51, 92);
         
         super.setWalkRightAnimation(walkRight);
         
@@ -30,7 +32,6 @@ public class Ninja extends MovableAnimatedActor
         walkLeft = new Animation(50, fileNames);
         walkLeft.scale(75, 100);
         walkLeft.mirrorHorizontally();
-        //walkLeft.setBounds(21, 5, 51, 92);        
         
         super.setWalkLeftAnimation(walkLeft);
         
@@ -42,14 +43,12 @@ public class Ninja extends MovableAnimatedActor
         
         idle = new Animation(50, files);
         idle.scale(60, 100);
-        //idle.setBounds(14, 5, 25, 50);        
         
         super.setIdleAnimation(idle);
         
         idleLeft = new Animation(50, files);
         idleLeft.scale(60, 100);
         idleLeft.mirrorHorizontally();
-        //idleLeft.setBounds(21, 5, 25, 50);        
         
         super.setIdleLeftAnimation(idleLeft);
         
@@ -61,14 +60,12 @@ public class Ninja extends MovableAnimatedActor
         
         fallRight = new Animation(50, files2);
         fallRight.scale(87, 100);
-        //fallRight.setBounds(14, 5, 25, 50);
         
         super.setFallRightAnimation(fallRight);
         
         fallLeft = new Animation(50, files2);
         fallLeft.scale(87, 100);
         fallLeft.mirrorHorizontally();
-        //fallLeft.setBounds(21, 5, 25, 50);
         
         super.setFallLeftAnimation(fallLeft);
         
@@ -93,5 +90,34 @@ public class Ninja extends MovableAnimatedActor
     public void act()
     {
         super.act();
+    }
+    
+    public int getScore()
+    {
+        return score;
+    }
+    
+    public int getLives()
+    {
+        return lives;
+    }
+    
+    public void increaseScore(int amount)
+    {
+        score += amount;
+        updateText();
+    }
+    
+    public void decreaseLives(int amount)
+    {
+        lives -= amount;
+        updateText();
+    }
+    
+    private void updateText()
+    {
+        World w = getWorld();
+        w.removeText(10, 30);
+        w.showText("Score: " + score + " Lives: " + lives, 10, 30, Color.BLACK);
     }
 }

@@ -16,9 +16,12 @@ public class MyWorld extends World {
             
             createTiles();
             addMainCharacter();
+            addRandomObjects();
             buildWorld();
             
             Mayflower.showBounds(true);
+            
+            showText("Score: " + ninja.getScore() + " Lives : " + ninja.getLives(), 10, 30, Color.BLACK);
         }
         
         public void createTiles() {
@@ -31,6 +34,8 @@ public class MyWorld extends World {
             for (int i = 0; i < tiles[0].length; i++) {
                 tiles[5][i] = "ground";
             }
+            tiles[3][4] = "ground";
+            //tiles[3][5] = "ground";
         }
         
         public void buildWorld() {
@@ -39,9 +44,9 @@ public class MyWorld extends World {
                     if (tiles[row][col].equals("ground")) {
                         addObject(new Block(), col*100, row*100);
                     }
-                    /**if (tiles[row][col].equals("yarn")) {
-                        addObject(new Yarn(), col*100, row*100);
-                    }*/
+                    if (tiles[row][col].equals("star")) {
+                        addObject(new NinjaStar(), col*100, row*100);
+                    }
                     if (tiles[row][col].equals("ninja")) {
                         addObject(ninja, col*100, row*100);
                     }
@@ -52,20 +57,26 @@ public class MyWorld extends World {
             }
         }
         
-        /**public void addRandomObjects() {
-            for (int r = 0; r < tiles.length; r++) {
+        public void addRandomObjects() {
+            for (int i = 0; i < 4; i++) {
+                int r = (int) (Math.random() * tiles.length);
+                int c = (int) (Math.random() * tiles[r].length);
+                tiles[r][c] = "star";
+            }
+            
+            /**for (int r = 0; r < tiles.length; r++) {
                 for (int c = 0; c < tiles[r].length; c++) {
                     int rand = (int) (Math.random() * tiles[r].length);
-                    if (rand < 3 && tiles[r][c] == "") {
-                        tiles[r][c] = "yarn";
+                    if (rand < 2 && tiles[r][c] == "") {
+                        tiles[r][c] = "star";
                     }
                 }
-            }
-        }*/
+            }*/
+        }
         
         public void addMainCharacter() {
             ninja = new Ninja();
-            tiles[1][2] = "ninja";
+            tiles[2][4] = "ninja";
             /**boolean added = false;
             
             while (!added) {

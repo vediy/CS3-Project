@@ -35,19 +35,20 @@ public class GravityActor extends Actor
     
     public void jump() {
         isJumping = true;
-        //setLocation(getX(), getY()+20);
         speed = 3;
+        //int distance = 0;
         while (speed>=0) {
             setLocation(getX(), getY()-speed);
             speed-=1;
         }
+        //setLocation(getX(), getY()-100);
     }
     
     public void act() {
         setLocation(getX(), getY()+2);
         if (isBlocked()) {
             setLocation(getX(), getY()-2);
-            isJumping = false;
+            //isJumping = false;
         }
     }
 }
