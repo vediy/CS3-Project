@@ -15,7 +15,7 @@ public class Block extends Actor
         if (isTouching(NinjaStar.class)) {
             Object a = getOneIntersectingObject(NinjaStar.class);
             NinjaStar n = (NinjaStar) a;
-            n.setLocation(800, n.getY());
+            n.setLocation(800, ((int) (Math.random() * 500)));
             /**World w = getWorld();
             w.removeObject(n);*/
         }

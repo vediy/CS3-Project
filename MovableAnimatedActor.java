@@ -106,7 +106,7 @@ public class MovableAnimatedActor extends AnimatedActor
                 }
             }
         }
-        if (Mayflower.isKeyDown(Keyboard.KEY_UP) && (y>0)) {
+        if (Mayflower.isKeyDown(Keyboard.KEY_UP) && (y>100)) {
             if (direction.equals("right")) {
                 newAction = "jumpRight";
             }

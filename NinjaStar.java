@@ -15,7 +15,7 @@ public class NinjaStar extends Actor
         setLocation(getX()-1,getY());
         
         if (getX() < 0) {
-            setLocation(800, getY());
+            setLocation(800, ((int) (Math.random() * 500)));
         }
         
         if(isTouching(Ninja.class))
@@ -32,6 +32,7 @@ public class NinjaStar extends Actor
             {
                 w.removeObject(c);
             }
+            setLocation(800, ((int) (Math.random() * 500)));
         }
     }
 }

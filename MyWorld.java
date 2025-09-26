@@ -31,8 +31,13 @@ public class MyWorld extends World {
                 }
             }
             
+            for (int i = 0; i < 4; i++) {
+                tiles[i][7] = "ladder";
+            }
+            
             for (int i = 0; i < tiles[0].length; i++) {
                 tiles[5][i] = "ground";
+                tiles[0][i] = "ground";
             }
             tiles[3][4] = "ground";
             //tiles[3][5] = "ground";
@@ -49,6 +54,9 @@ public class MyWorld extends World {
                     }
                     if (tiles[row][col].equals("ninja")) {
                         addObject(ninja, col*100, row*100);
+                    }
+                    if (tiles[row][col].equals("ladder")) {
+                        addObject(new Ladder(), col*100, row*100);
                     }
                     /**if (tiles[row][col].equals("dog")) {
                         addObject(dog, col*100, row*100);
