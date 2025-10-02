@@ -13,7 +13,6 @@ public class MyWorld extends World {
             //cat = new Cat();
             //addObject(cat, 400, 100);
 
-            
             createTiles();
             addMainCharacter();
             addRandomObjects();
@@ -32,12 +31,14 @@ public class MyWorld extends World {
             }
             
             for (int i = 0; i < 4; i++) {
+                if (i == 0) {
+                    tiles[i][7] = "specialladder";
+                }
                 tiles[i][7] = "ladder";
             }
             
             for (int i = 0; i < tiles[0].length; i++) {
                 tiles[5][i] = "ground";
-                tiles[0][i] = "ground";
             }
             tiles[3][4] = "ground";
             //tiles[3][5] = "ground";
@@ -55,8 +56,8 @@ public class MyWorld extends World {
                     if (tiles[row][col].equals("ninja")) {
                         addObject(ninja, col*100, row*100);
                     }
-                    if (tiles[row][col].equals("ladder")) {
-                        addObject(new Ladder(), col*100, row*100);
+                    if (tiles[row][col].equals("coin")) {
+                        addObject(new Coin(), col*100, row*100);
                     }
                     /**if (tiles[row][col].equals("dog")) {
                         addObject(dog, col*100, row*100);
@@ -72,6 +73,12 @@ public class MyWorld extends World {
                 tiles[r][c] = "star";
             }
             
+            for (int i = 0; i < 5; i++) {
+                int r = (int) (Math.random() * tiles.length);
+                int c = (int) (Math.random() * tiles[r].length);
+                tiles[r][c] = "coin";
+            }
+            
             /**for (int r = 0; r < tiles.length; r++) {
                 for (int c = 0; c < tiles[r].length; c++) {
                     int rand = (int) (Math.random() * tiles[r].length);
@@ -81,20 +88,20 @@ public class MyWorld extends World {
                 }
             }*/
         }
-        
+
         public void addMainCharacter() {
             ninja = new Ninja();
-            tiles[2][4] = "ninja";
-            /**boolean added = false;
-            
-            while (!added) {
-                int row = (int) (Math.random() * tiles.length);
-                int col = (int) (Math.random() * tiles[0].length);
-                if (tiles[row][col] == "") {
-                    tiles[row][col] = "cat";
-                    added = true;
+            tiles[2][4] = "ninja";            
+        }
+        
+        public void clearWorld() {
+            for (int i = 0; i < tiles.length; i++) {
+                for (int j = 0; j < tiles[i].length; j++) {
+                    tiles[i][j] = "";
                 }
-            }*/
+            }
+            
+            buildWorld();
         }
         
         /**public void addSideCharacter() {

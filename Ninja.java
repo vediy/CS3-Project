@@ -13,11 +13,16 @@ public class Ninja extends MovableAnimatedActor
     private Animation jumpRight;
     private Animation jumpLeft;
     
-    private int score = 0;
-    private int lives = 3;
+    private int score;
+    private int lives;
+    private int level;
     
     public Ninja()
     {
+        score = 0;
+        lives = 3;
+        level = 1;
+        
         String[] fileNames = new String[10];
         for (int i = 0; i < fileNames.length; i++) {
             fileNames[i] = "img/ninjagirl/Run__00" + (i) + ".png";
@@ -90,6 +95,14 @@ public class Ninja extends MovableAnimatedActor
     public void act()
     {
         super.act();
+        World w = getWorld();
+        if(isTouching(Coin.class))
+        {
+            Object a = getOneIntersectingObject(Coin.class);
+            Coin c = (Coin) a;
+            increaseScore(1);
+            w.removeObject(c);
+        }
     }
     
     public int getScore()
@@ -102,16 +115,36 @@ public class Ninja extends MovableAnimatedActor
         return lives;
     }
     
+    public int getLevel() {
+        return level;
+    }
+    
     public void increaseScore(int amount)
     {
         score += amount;
         updateText();
+        
+        World w = getWorld();
+        if (score >= 5) {
+            for (int i = 0; i < 4; i++) {
+                if (i == 0) {
+                    w.addObject(new SpecialLadder(), 7, i*100);
+                }
+                else {
+                    w.addObject(new Ladder(), 7, i*100);
+                }
+            }
+        }
     }
     
     public void decreaseLives(int amount)
     {
         lives -= amount;
         updateText();
+    }
+    
+    public void nextLevel() {
+        level++;
     }
     
     private void updateText()
