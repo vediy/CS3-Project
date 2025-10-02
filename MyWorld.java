@@ -7,9 +7,9 @@ public class MyWorld extends World {
         
         public MyWorld() 
         {  
-            setBackground("img/BG/BG.png");
-            addObject(new ScrollBG(),0,0);
-            addObject(new ScrollBG(),800,0);
+            MayflowerImage m = new MayflowerImage("img/BG/BG.png");
+            addObject(new ScrollBG(m),0,0);
+            addObject(new ScrollBG(m),800,0);
             tiles = new String[6][8];
             //cat = new Cat();
             //addObject(cat, 400, 100);

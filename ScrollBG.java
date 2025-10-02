@@ -4,9 +4,9 @@ public class ScrollBG extends Actor
 {
     private Timer animationTimer;
     
-    public ScrollBG()
+    public ScrollBG(MayflowerImage m)
     {
-        MayflowerImage p = new MayflowerImage("img/BG/BG.png");
+        MayflowerImage p = m;
         p.scale(800,600);
         setImage(p);
         animationTimer = new Timer(50000000);
