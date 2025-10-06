@@ -2,10 +2,8 @@
 
 import mayflower.*;
 
-public class Ninja extends MovableAnimatedActor
+public class SpaceNinja extends MovableAnimatedSpaceActor
 {
-    private Animation walkRight;
-    private Animation walkLeft;
     private Animation idle;
     private Animation idleLeft;
     private Animation fallRight;
@@ -18,28 +16,10 @@ public class Ninja extends MovableAnimatedActor
     private int score;
     private int lives;
     
-    public Ninja()
+    public SpaceNinja()
     {
         score = 0;
         lives = 3;
-        
-        String[] fileNames = new String[10];
-        for (int i = 0; i < fileNames.length; i++) {
-            fileNames[i] = "img/ninjagirl/Run__00" + (i) + ".png";
-        }
-        
-        walkRight = new Animation(50, fileNames);
-        walkRight.scale(75, 100);
-        
-        super.setWalkRightAnimation(walkRight);
-        
-        
-        walkLeft = new Animation(50, fileNames);
-        walkLeft.scale(75, 100);
-        walkLeft.mirrorHorizontally();
-        
-        super.setWalkLeftAnimation(walkLeft);
-        
         
         String[] files = new String[10];
         for (int i = 0; i < files.length; i++) {
@@ -56,23 +36,6 @@ public class Ninja extends MovableAnimatedActor
         idleLeft.mirrorHorizontally();
         
         super.setIdleLeftAnimation(idleLeft);
-        
-        
-        String[] files2 = new String[10];
-        for (int i = 0; i < files2.length; i++) {
-            files2[i] = "img/ninjagirl/Glide_00" + (i) + ".png";
-        }
-        
-        fallRight = new Animation(50, files2);
-        fallRight.scale(87, 100);
-        
-        super.setFallRightAnimation(fallRight);
-        
-        fallLeft = new Animation(50, files2);
-        fallLeft.scale(87, 100);
-        fallLeft.mirrorHorizontally();
-        
-        super.setFallLeftAnimation(fallLeft);
         
         
         String[] files3 = new String[10];
@@ -120,11 +83,6 @@ public class Ninja extends MovableAnimatedActor
             increaseScore(1);
             w.removeObject(c);
         }
-        /**if (isTouching(SpecialLadder.class)) {
-            Object a = getOneIntersectingObject(SpecialLadder.class);
-            SpecialLadder s = (SpecialLadder) a;
-            w.removeObject(s);
-        }*/
         
         if (getY() > 600) {
             decreaseLives(1);
@@ -177,6 +135,6 @@ public class Ninja extends MovableAnimatedActor
     {
         World w = getWorld();
         w.removeText(10, 30);
-        w.showText("Score: " + score + " Lives: " + lives, 10, 30, Color.BLACK);
+        w.showText("Score: " + score + " Lives: " + lives, 10, 30, Color.WHITE);
     }
 }
