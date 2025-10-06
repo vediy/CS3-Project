@@ -10,7 +10,6 @@ import mayflower.*;
 
 public class SpecialLadder extends Ladder
 {
-    
     public SpecialLadder()
     {
         super();
@@ -22,8 +21,6 @@ public class SpecialLadder extends Ladder
         super.act();
         if(isTouching(Ninja.class))
         {
-            Object a = getOneIntersectingObject(Ninja.class);
-            Ninja n = (Ninja) a;
             if (MyMayflower.getLevel() == Level.ONE) {
                 MyMayflower.levelTwo();
                 MyMayflower.nextLevel();
@@ -37,9 +34,7 @@ public class SpecialLadder extends Ladder
         }
         
         if(isTouching(SpaceNinja.class)) {
-            Object a = getOneIntersectingObject(SpaceNinja.class);
-            SpaceNinja n = (SpaceNinja) a;
-            System.out.println("You win!");
+            MyMayflower.win();
         }
     }
 }

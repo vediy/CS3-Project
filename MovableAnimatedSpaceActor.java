@@ -100,6 +100,7 @@ public class MovableAnimatedSpaceActor extends AnimatedSpaceActor
             if (direction.equals("left")) {
                 newAction = "climbLeft";
             }
+            setLocation(getX(), getY()-3);
         }
         
         if ((newAction != null) && !(newAction.equals(currentAction))) {

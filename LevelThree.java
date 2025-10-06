@@ -18,7 +18,7 @@ public class LevelThree extends World
         addRandomObjects();
         buildWorld();
             
-        Mayflower.showBounds(true);
+        //Mayflower.showBounds(true);
         
         showText("Score: " + ninja.getScore() + " Lives : " + ninja.getLives(), 10, 30, Color.WHITE);
     }

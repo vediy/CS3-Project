@@ -114,12 +114,12 @@ public class SpaceNinja extends MovableAnimatedSpaceActor
         
         World w = getWorld();
         if (score >= 5) {
-            for (int i = 0; i < 4; i++) {
+            for (int i = 0; i < 3; i++) {
                 if (i == 0) {
-                    w.addObject(new SpecialLadder(), 7, i*100);
+                    w.addObject(new SpecialLadder(), 820, i*100);
                 }
                 else {
-                    w.addObject(new Ladder(), 7, i*100);
+                    w.addObject(new Ladder(), 820, i*100);
                 }
             }
         }

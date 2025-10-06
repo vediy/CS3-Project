@@ -35,6 +35,12 @@ public class MyMayflower extends Mayflower
         Mayflower.setWorld(w);
     }
     
+    public static void win() {
+        Mayflower.setFullScreen(false);
+        World w = new YouWin();
+        Mayflower.setWorld(w);
+    }
+    
     public static Level getLevel() {
         return myLevel;
     }
