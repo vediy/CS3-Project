@@ -1,17 +1,17 @@
 import mayflower.*;
 
 
-public class MyWorld extends World {
+public class LevelOne extends World {
         private Ninja ninja;
         private String[][] tiles;
         
-        public MyWorld() 
+        public LevelOne() 
         {
-            setBackground("img/BG/BG.png");
+            MayflowerImage m = new MayflowerImage("img/BG/BG.png");
+            addObject(new ScrollBG(m),0,0);
+            addObject(new ScrollBG(m),800,0);
             
             tiles = new String[6][8];
-            //cat = new Cat();
-            //addObject(cat, 400, 100);
 
             createTiles();
             addMainCharacter();
@@ -30,13 +30,6 @@ public class MyWorld extends World {
                 }
             }
             
-            for (int i = 0; i < 4; i++) {
-                if (i == 0) {
-                    tiles[i][7] = "specialladder";
-                }
-                tiles[i][7] = "ladder";
-            }
-            
             for (int i = 0; i < tiles[0].length; i++) {
                 tiles[5][i] = "ground";
             }
@@ -47,21 +40,18 @@ public class MyWorld extends World {
         public void buildWorld() {
             for (int row = 0; row < tiles.length; row++) {
                 for (int col = 0; col < tiles[row].length; col++) {
-                    if (tiles[row][col].equals("ground")) {
-                        addObject(new Block(), col*100, row*100);
-                    }
-                    if (tiles[row][col].equals("star")) {
-                        addObject(new NinjaStar(), col*100, row*100);
-                    }
                     if (tiles[row][col].equals("ninja")) {
                         addObject(ninja, col*100, row*100);
                     }
                     if (tiles[row][col].equals("coin")) {
                         addObject(new Coin(), col*100, row*100);
                     }
-                    /**if (tiles[row][col].equals("dog")) {
-                        addObject(dog, col*100, row*100);
-                    }*/
+                    if (tiles[row][col].equals("ground")) {
+                        addObject(new Block(), col*100, row*100);
+                    }
+                    if (tiles[row][col].equals("star")) {
+                        addObject(new NinjaStar(), col*100, row*100);
+                    }
                 }
             }
         }
@@ -70,23 +60,24 @@ public class MyWorld extends World {
             for (int i = 0; i < 4; i++) {
                 int r = (int) (Math.random() * tiles.length);
                 int c = (int) (Math.random() * tiles[r].length);
-                tiles[r][c] = "star";
+                if (tiles [r][c] == "") {
+                    tiles[r][c] = "star";
+                }
+                else {
+                    i--;
+                }
             }
             
             for (int i = 0; i < 5; i++) {
                 int r = (int) (Math.random() * tiles.length);
                 int c = (int) (Math.random() * tiles[r].length);
-                tiles[r][c] = "coin";
-            }
-            
-            /**for (int r = 0; r < tiles.length; r++) {
-                for (int c = 0; c < tiles[r].length; c++) {
-                    int rand = (int) (Math.random() * tiles[r].length);
-                    if (rand < 2 && tiles[r][c] == "") {
-                        tiles[r][c] = "star";
-                    }
+                if (tiles [r][c] == "") {
+                    tiles[r][c] = "coin";
                 }
-            }*/
+                else {
+                    i--;
+                }
+            }
         }
 
         public void addMainCharacter() {
