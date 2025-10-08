@@ -1,7 +1,7 @@
 #BlueJ class context
-comment0.target=MovableAnimatedActor
+comment0.target=SkyMovableAnimatedActor
 comment1.params=
-comment1.target=MovableAnimatedActor()
+comment1.target=SkyMovableAnimatedActor()
 comment10.params=ani
 comment10.target=void\ setClimbLeftAnimation(Animation)
 comment11.params=ani
