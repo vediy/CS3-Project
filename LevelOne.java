@@ -33,8 +33,6 @@ public class LevelOne extends World {
             for (int i = 0; i < tiles[0].length; i++) {
                 tiles[5][i] = "ground";
             }
-            tiles[3][4] = "ground";
-            //tiles[3][5] = "ground";
         }
         
         public void buildWorld() {
@@ -94,20 +92,6 @@ public class LevelOne extends World {
             
             buildWorld();
         }
-        
-        /**public void addSideCharacter() {
-            jack = new Jack();
-            boolean added = false;
-            
-            while (!added) {
-                int row = (int) (Math.random()*tiles.length);
-                int col = (int) (Math.random()*tiles[0].length);
-                if (tiles[row][col] == "") {
-                    tiles[row][col] = "jack";
-                    added = true;
-                }
-            }
-        }*/
         
         public void act() {
             

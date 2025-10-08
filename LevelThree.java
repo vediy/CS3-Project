@@ -17,8 +17,6 @@ public class LevelThree extends World
         addMainCharacter();
         addRandomObjects();
         buildWorld();
-            
-        //Mayflower.showBounds(true);
         
         showText("Score: " + ninja.getScore() + " Lives : " + ninja.getLives(), 10, 30, Color.WHITE);
     }
@@ -72,6 +70,7 @@ public class LevelThree extends World
     }
     
     public void addMainCharacter() {
+        // For the last level, we need to spawn a SpaceNinja instead of a regular ninja!
         ninja = new SpaceNinja();
         tiles[2][4] = "ninja";            
     }

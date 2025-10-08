@@ -1,6 +1,6 @@
 import mayflower.*;
 
-public class MovableAnimatedActor extends AnimatedActor
+public class SkyMovableAnimatedActor extends SkyAnimatedActor
 {
     private Animation walkRight;
     private Animation walkLeft;    
@@ -14,15 +14,13 @@ public class MovableAnimatedActor extends AnimatedActor
     private Animation climbLeft;
     private String currentAction;
     private String direction;
-    private Timer gravityTimer;
     
-    public MovableAnimatedActor()
+    public SkyMovableAnimatedActor()
     {
         walkRight = null;
         idle = null;
         currentAction = null;
         direction = "right";
-        gravityTimer = new Timer(500000000);
     }
     
     public void setAnimation(Animation a) {
@@ -39,12 +37,10 @@ public class MovableAnimatedActor extends AnimatedActor
     
     public void setFallRightAnimation(Animation ani) {
         fallRight = ani;
-
     }
     
     public void setFallLeftAnimation(Animation ani) {
         fallLeft = ani;
-
     }
     
     public void setJumpRightAnimation(Animation ani) {
@@ -120,23 +116,15 @@ public class MovableAnimatedActor extends AnimatedActor
                 }
             }
         }
-        if (Mayflower.isKeyDown(Keyboard.KEY_G)){
-            glide();
-        }
-        else{
-            stopGlide();
-        }
+        
         if (Mayflower.isKeyDown(Keyboard.KEY_UP) && (y>0)) {
-                if (gravityTimer.isDone()) {
-                    gravityTimer.reset();
-                    if (direction.equals("right")) {
-                        newAction = "jumpRight";
-                    }
-                    if (direction.equals("left")) {
-                        newAction = "jumpLeft";
-                    }
-                    jump();
-                }
+            if (direction.equals("right")) {
+                newAction = "jumpRight";
+            }
+            if (direction.equals("left")) {
+                newAction = "jumpLeft";
+            }
+            jump();
         }
         if (isTouching(Ladder.class)) {
             if (direction.equals("right")) {

@@ -14,6 +14,7 @@ public class GravityActor extends Actor
         isJumping = false;
     }
     
+    // Checks if touching block
     public boolean isBlocked() {
         if (isTouching(Block.class)) {
             return true;
@@ -21,6 +22,7 @@ public class GravityActor extends Actor
         return false;
     }
     
+    // Checks if touching ladder
     public boolean isLaddered() {
         if (isTouching(Ladder.class)) {
             return true;
@@ -28,6 +30,7 @@ public class GravityActor extends Actor
         return false;
     }
     
+    // Checks if currently falling
     public boolean isFalling() {
         boolean ret;
         setLocation(getX(), getY() + 2);
@@ -35,11 +38,13 @@ public class GravityActor extends Actor
         setLocation(getX(), getY() - 2);
         return !ret;
     }
-    
+
+    // Checks if currently falling    
     public boolean isJumping() {
         return isJumping;
     }
     
+    // Makes the player jump! (Gravity)  
     public void jump() {
         isJumping = true;
         speed = 3;
@@ -51,11 +56,11 @@ public class GravityActor extends Actor
         //setLocation(getX(), getY()-100);
     }
     
+    // Constantly making the player fall -- unless it's touching a block or ladder
     public void act() {
         setLocation(getX(), getY()+2);
         if (isBlocked()) {
             setLocation(getX(), getY()-2);
-            //isJumping = false;
         }
         if (isLaddered()) {
             setLocation(getX(), getY()-4);

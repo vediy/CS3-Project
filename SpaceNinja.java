@@ -1,4 +1,6 @@
-
+/** This specific ninja class is used only in the last level, and it has
+ * no gravity to simulate space. Otherwise, it is largely the same.
+ */
 
 import mayflower.*;
 

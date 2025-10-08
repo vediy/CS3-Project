@@ -2,24 +2,23 @@ import mayflower.*;
 
 public class LevelTwo extends World
 {
-    private Ninja ninja;
+    private SkyNinja ninja;
     private String[][] tiles;
-        public LevelTwo()
+    
+    public LevelTwo()
     {
         MayflowerImage m = new MayflowerImage("img/BG/Sky.png");
-            addObject(new ScrollBG(m),0,0);
-            addObject(new ScrollBG(m),800,0);
+        addObject(new ScrollBG(m),0,0);
+        addObject(new ScrollBG(m),800,0);
             
-            tiles = new String[6][8];
+        tiles = new String[6][8];
 
-            createTiles();
-            addMainCharacter();
-            addRandomObjects();
-            buildWorld();
+        createTiles();
+        addMainCharacter();
+        addRandomObjects();
+        buildWorld();
             
-            //Mayflower.showBounds(true);
-            
-            showText("Score: " + ninja.getScore() + " Lives : " + ninja.getLives(), 10, 30, Color.BLACK);
+        showText("Score: " + ninja.getScore() + " Lives : " + ninja.getLives(), 10, 30, Color.BLACK);
     }
     
     public void createTiles() {
@@ -71,8 +70,8 @@ public class LevelTwo extends World
     }
     
     public void addMainCharacter() {
-        ninja = new Ninja();
-        tiles[2][4] = "ninja";            
+        ninja = new SkyNinja();
+        tiles[2][4] = "ninja";
     }
     
     public void act() {

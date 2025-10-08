@@ -13,6 +13,8 @@ public class ScrollBG extends Actor
     }
 
     public void act() {
+        // The background is moving right to left constantly, and it loops around when it reaches the end of the screen
+        
         if (animationTimer.isDone()) {
             animationTimer.reset();
             setLocation(getX()-1,getY());

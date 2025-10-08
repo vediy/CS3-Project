@@ -1,8 +1,10 @@
-
+/** This specific ninja class is used only in the second level, and it has
+ * a floaty-gravity simulation to simulate the sky. Otherwise, it is largely the same.
+ */
 
 import mayflower.*;
 
-public class Ninja extends MovableAnimatedActor
+public class SkyNinja extends SkyMovableAnimatedActor
 {
     private Animation walkRight;
     private Animation walkLeft;
@@ -14,27 +16,14 @@ public class Ninja extends MovableAnimatedActor
     private Animation jumpLeft;
     private Animation climbRight;
     private Animation climbLeft;
-    private Ladder ladder1;
-    private Ladder ladder2;
-    private SpecialLadder ladder3;
     
     private int score;
     private int lives;
     
-    public Ninja()
+    public SkyNinja()
     {
         score = 0;
-        lives = 5;
-        
-        ladder1 = new Ladder();
-        ladder2 = new Ladder();
-        ladder3 = new SpecialLadder();
-        World w = getWorld();
-        w.addObject(ladder1, 820, 200);
-        w.addObject(ladder2, 820, 100);
-        w.addObject(ladder3, 820, 0);
-        
-        // Below: creates the animation arrays for all possible animations to be used for the Ninja
+        lives = 3;
         
         String[] fileNames = new String[10];
         for (int i = 0; i < fileNames.length; i++) {
@@ -132,9 +121,12 @@ public class Ninja extends MovableAnimatedActor
             Coin c = (Coin) a;
             increaseScore(1);
             w.removeObject(c);
-            // Plays coin sound if the coin is picked up
-            Mayflower.playMusic("sound/coin.mp3");
         }
+        /**if (isTouching(SpecialLadder.class)) {
+            Object a = getOneIntersectingObject(SpecialLadder.class);
+            SpecialLadder s = (SpecialLadder) a;
+            w.removeObject(s);
+        }*/
         
         if (getY() > 600) {
             decreaseLives(1);
@@ -166,17 +158,14 @@ public class Ninja extends MovableAnimatedActor
         
         World w = getWorld();
         if (score >= 5) {
-            ladder1.makeMove();
-            ladder2.makeMove();
-            ladder3.makeMove();
-            /**for (int i = 0; i < 3; i++) {
+            for (int i = 0; i < 3; i++) {
                 if (i == 0) {
                     w.addObject(new SpecialLadder(), 820, i*100);
                 }
                 else {
                     w.addObject(new Ladder(), 820, i*100);
                 }
-            }*/
+            }
         }
     }
     

@@ -10,16 +10,19 @@ import mayflower.*;
 
 public class SpecialLadder extends Ladder
 {
+    private boolean needsMove;
+    
     public SpecialLadder()
     {
         super();
     }
-
     
     public void act()
     {
         super.act();
-        if(isTouching(Ninja.class))
+        
+        // If it touches a player on level one or two, it ups the level and changes the screen
+        if(isTouching(Ninja.class) || isTouching(SkyNinja.class))
         {
             if (MyMayflower.getLevel() == Level.ONE) {
                 MyMayflower.levelTwo();
@@ -33,6 +36,7 @@ public class SpecialLadder extends Ladder
             }
         }
         
+        // If it touches a player on the last level, the player wins
         if(isTouching(SpaceNinja.class)) {
             MyMayflower.win();
         }
