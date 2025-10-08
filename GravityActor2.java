@@ -66,7 +66,7 @@ public class GravityActor2 extends Actor {
         // Apply gravity acceleration
         velocityY += gravity;
 
-        // Optional: Cap fall speed so you don’t go infinitely fast
+        //Cap fall speed so you don’t go infinitely fast
         if (velocityY > 10)
             velocityY = 10;
 
@@ -89,8 +89,6 @@ public class GravityActor2 extends Actor {
             setLocation(getX(), getY() - 2);
         }
 
-        // Example: you can trigger glide by holding a key (if keyboard input available)
-        // if (Mayflower.isKeyDown(Keyboard.KEY_SPACE)) glide();
-        // else stopGlide();
+
     }
 }

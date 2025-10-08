@@ -120,6 +120,12 @@ public class MovableAnimatedActor extends AnimatedActor
                 }
             }
         }
+        if (Mayflower.isKeyDown(Keyboard.KEY_G)){
+            glide();
+        }
+        else{
+            stopGlide();
+        }
         if (Mayflower.isKeyDown(Keyboard.KEY_UP) && (y>0)) {
                 if (gravityTimer.isDone()) {
                     gravityTimer.reset();

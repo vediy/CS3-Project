@@ -29,7 +29,12 @@ public class SpecialLadder extends Ladder
                 MyMayflower.nextLevel();
                 System.out.println("Level two");
             }
-            else if (MyMayflower.getLevel() == Level.TWO) {
+        }
+        if(isTouching(SkyNinja.class))
+        {
+            Object a = getOneIntersectingObject(SkyNinja.class);
+            SkyNinja n = (SkyNinja) a;
+            if (MyMayflower.getLevel() == Level.TWO) {
                 MyMayflower.levelThree();
                 MyMayflower.nextLevel();
                 System.out.println("Level three");

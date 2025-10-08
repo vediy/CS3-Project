@@ -34,6 +34,22 @@ public class NinjaStar extends Actor
             }
             setLocation(800, ((int) (Math.random() * 500)));
         }
+        if(isTouching(SkyNinja.class))
+        {
+            Object a = getOneIntersectingObject(SkyNinja.class);
+            SkyNinja c = (SkyNinja) a;
+            World w = getWorld();
+            c.decreaseLives(1);
+            if(c.getLives() > 0)
+            {
+                c.setLocation(400, 200);
+            }
+            else
+            {
+                MyMayflower.gameOver(); 
+            }
+            setLocation(800, ((int) (Math.random() * 500)));
+        }
         
         if(isTouching(SpaceNinja.class))
         {

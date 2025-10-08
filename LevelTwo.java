@@ -2,7 +2,7 @@ import mayflower.*;
 
 public class LevelTwo extends World
 {
-    private Ninja ninja;
+    private SkyNinja ninja;
     private String[][] tiles;
         public LevelTwo()
     {
@@ -71,7 +71,7 @@ public class LevelTwo extends World
     }
     
     public void addMainCharacter() {
-        ninja = new Ninja();
+        ninja = new SkyNinja();
         tiles[2][4] = "ninja";            
     }
     
