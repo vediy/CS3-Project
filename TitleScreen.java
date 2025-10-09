@@ -1,6 +1,6 @@
 import mayflower.*;
 
-
+// Title screen
 public class TitleScreen extends World {
         
         public TitleScreen() 

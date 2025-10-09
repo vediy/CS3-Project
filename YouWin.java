@@ -1,5 +1,6 @@
 import mayflower.*;
 
+// Win screen
 public class YouWin extends World
 {
     public YouWin() 

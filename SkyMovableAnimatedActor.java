@@ -2,6 +2,8 @@ import mayflower.*;
 
 public class SkyMovableAnimatedActor extends SkyAnimatedActor
 {
+    // Sets all of the animations and animation conditions for the player
+    
     private Animation walkRight;
     private Animation walkLeft;    
     private Animation idle;

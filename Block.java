@@ -2,7 +2,7 @@ import mayflower.*;
 
 public class Block extends Actor
 {
-    
+    // Grass block in the first level
     
     public Block()
     {

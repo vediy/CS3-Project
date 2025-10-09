@@ -1,5 +1,7 @@
 import mayflower.*;
 
+// Gravity actor for the second level -- floats in the air more than has gravity
+
 public class GravityActor extends Actor
 {
     private int startY;

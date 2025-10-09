@@ -1,5 +1,6 @@
 import mayflower.*;
 
+// Normal ladder that the player climbs to the next level (SpecialLadder)
 public class Ladder extends Actor
 {
     private Timer animationTimer;
@@ -7,6 +8,7 @@ public class Ladder extends Actor
     
     public Ladder()
     {
+        // Creates a 70*100 ladder
         MayflowerImage p = new MayflowerImage("img/ladder.png");
         p.scale(70,100);
         setImage(p);
@@ -22,6 +24,7 @@ public class Ladder extends Actor
     }
 
     public void act() {
+        // Moves the ladder if the pass condition is reached
         if (needsMove) {
             if (animationTimer.isDone()) {
                 animationTimer.reset();

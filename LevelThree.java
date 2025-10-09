@@ -26,8 +26,10 @@ public class LevelThree extends World
         addObject(ladder2, 820, 100);
         addObject(ladder3, 820, 0);
         
+        // Add characters + items
         addMainCharacter();
         addRandomObjects();
+        // Add everything to the actual world
         buildWorld();
         
         showText("Score: " + ninja.getScore() + " Lives : " + ninja.getLives(), 10, 30, Color.WHITE);

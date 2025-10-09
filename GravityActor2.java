@@ -1,5 +1,7 @@
 import mayflower.*;
 
+// Gravity actor for the first level - implements actual acceleration
+
 public class GravityActor2 extends Actor {
     private double velocityY;
     private double gravity;

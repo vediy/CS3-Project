@@ -2,6 +2,8 @@ import mayflower.*;
 
 public class MovableAnimatedSpaceActor extends AnimatedSpaceActor
 {   
+    // Sets all of the animations and animation conditions for the player
+
     private Animation idle;
     private Animation idleLeft;
     private Animation jumpRight;

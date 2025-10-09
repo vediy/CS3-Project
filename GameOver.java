@@ -1,5 +1,6 @@
 import mayflower.*;
 
+// Lose screen
 public class GameOver extends World
 {
     public GameOver() 
