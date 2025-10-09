@@ -3,12 +3,14 @@ import mayflower.*;
 public class MyMayflower extends Mayflower
 {
     private static Level myLevel;
+    private static boolean passed;
     
     public MyMayflower()
     {
         //Create a window with 800x600 resolution
         super("Project 1", 800, 600);
         myLevel = Level.ONE;
+        passed = false;
     }
     
     // Goes from title screen to Level 1
@@ -23,6 +25,8 @@ public class MyMayflower extends Mayflower
         Mayflower.setFullScreen(false);
         World w =  new LevelTwo();
         Mayflower.setWorld(w);
+        Mayflower.stopMusic("sound/mountain-trials.mp3");
+        Mayflower.playMusic("sound/dizzy-spells.mp3");
     }
     
     // Takes you to level 3
@@ -30,6 +34,8 @@ public class MyMayflower extends Mayflower
         Mayflower.setFullScreen(false);
         World w =  new LevelThree();
         Mayflower.setWorld(w);
+        Mayflower.stopMusic("sound/dizzy-spells.mp3");
+        Mayflower.playMusic("sound/digestive-biscuit.mp3");
     }
     
     // Game over screen
@@ -37,6 +43,16 @@ public class MyMayflower extends Mayflower
         Mayflower.setFullScreen(false);        
         World w = new GameOver();
         Mayflower.setWorld(w);
+        if (myLevel == Level.ONE) {
+            Mayflower.stopMusic("sound/mountain-trials.mp3");
+        }
+        else if (myLevel == Level.TWO) {
+            Mayflower.stopMusic("sound/dizzy-spells.mp3");
+        }
+        else if (myLevel == Level.THREE) {
+            Mayflower.stopMusic("sound/digestive-biscuit.mp3");
+        }
+        Mayflower.playMusic("sound/game-over.mp3");
     }
     
     // Win Screen
@@ -44,6 +60,8 @@ public class MyMayflower extends Mayflower
         Mayflower.setFullScreen(false);
         World w = new YouWin();
         Mayflower.setWorld(w);
+        Mayflower.stopMusic("sound/digestive-biscuit.mp3");
+        Mayflower.playMusic("sound/dreamscape.mp3");
     }
     
     // Returns the enum value of the Level the player is on
@@ -64,6 +82,14 @@ public class MyMayflower extends Mayflower
         }
     }
     
+    public static void changePass() {
+        passed = !passed;
+    }
+    
+    public static boolean isPassed() {
+        return passed;
+    }
+    
     // Initializes the program with the title screen
     public void init()
     {
@@ -71,5 +97,6 @@ public class MyMayflower extends Mayflower
         Mayflower.setFullScreen(false);
         World w =  new TitleScreen();
         Mayflower.setWorld(w);
+        Mayflower.playMusic("sound/mountain-trials.mp3");
     }
 }

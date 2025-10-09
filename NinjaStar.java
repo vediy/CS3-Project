@@ -26,6 +26,8 @@ public class NinjaStar extends Actor
             Ninja c = (Ninja) a;
             World w = getWorld();
             c.decreaseLives(1);
+            // Plays death sound if ninjastar touches player
+            Mayflower.playMusic("sound/damage.mp3");
             if(c.getLives() > 0)
             {
                 c.setLocation(400, 200);
@@ -44,6 +46,8 @@ public class NinjaStar extends Actor
             SpaceNinja c = (SpaceNinja) a;
             World w = getWorld();
             c.decreaseLives(1);
+            // Plays death sound if ninjastar touches player
+            Mayflower.playMusic("sound/damage.mp3");
             if(c.getLives() > 0)
             {
                 c.setLocation(400, 200);
@@ -62,6 +66,8 @@ public class NinjaStar extends Actor
             SkyNinja c = (SkyNinja) a;
             World w = getWorld();
             c.decreaseLives(1);
+            // Plays death sound if ninjastar touches player
+            Mayflower.playMusic("sound/damage.mp3");
             if(c.getLives() > 0)
             {
                 c.setLocation(400, 200);
@@ -81,6 +87,26 @@ public class NinjaStar extends Actor
             
             // Resets Ninja to rightmost side of the screen at a random y-value if it touches another NinjaStar 
             setLocation(800, ((int) (Math.random() * 500)));
+        }
+        
+        if(isTouching(Ladder.class))
+        {
+            Object a = getOneIntersectingObject(Ladder.class);
+            Ladder l = (Ladder) a;
+            if (l.isMoving()) {
+                // Resets Ninja to rightmost side of the screen at a random y-value if it touches another NinjaStar 
+                setLocation(800, ((int) (Math.random() * 500)));
+            }
+        }
+        
+        if(isTouching(SpecialLadder.class))
+        {
+            Object a = getOneIntersectingObject(SpecialLadder.class);
+            SpecialLadder l = (SpecialLadder) a;
+            if (l.isMoving()) {
+                // Resets Ninja to rightmost side of the screen at a random y-value if it touches another NinjaStar 
+                setLocation(800, ((int) (Math.random() * 500)));
+            }
         }
     }
 }

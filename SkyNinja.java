@@ -121,6 +121,8 @@ public class SkyNinja extends SkyMovableAnimatedActor
             Coin c = (Coin) a;
             increaseScore(1);
             w.removeObject(c);
+            // Plays coin sound if the coin is picked up
+            Mayflower.playMusic("sound/coin.mp3");
         }
         /**if (isTouching(SpecialLadder.class)) {
             Object a = getOneIntersectingObject(SpecialLadder.class);
@@ -156,16 +158,8 @@ public class SkyNinja extends SkyMovableAnimatedActor
         score += amount;
         updateText();
         
-        World w = getWorld();
         if (score >= 5) {
-            for (int i = 0; i < 3; i++) {
-                if (i == 0) {
-                    w.addObject(new SpecialLadder(), 820, i*100);
-                }
-                else {
-                    w.addObject(new Ladder(), 820, i*100);
-                }
-            }
+            MyMayflower.changePass();
         }
     }
     

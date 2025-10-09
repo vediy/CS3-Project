@@ -4,6 +4,9 @@ import mayflower.*;
 public class LevelOne extends World {
         private Ninja ninja;
         private String[][] tiles;
+        private Ladder ladder1;
+        private Ladder ladder2;
+        private SpecialLadder ladder3;
         
         public LevelOne() 
         {
@@ -14,11 +17,18 @@ public class LevelOne extends World {
             tiles = new String[6][8];
 
             createTiles();
+            
+            // Add ladders
+            ladder1 = new Ladder();
+            ladder2 = new Ladder();
+            ladder3 = new SpecialLadder();
+            addObject(ladder1, 820, 200);
+            addObject(ladder2, 820, 100);
+            addObject(ladder3, 820, 0);
+            
             addMainCharacter();
             addRandomObjects();
             buildWorld();
-            
-            //Mayflower.showBounds(true);
             
             showText("Score: " + ninja.getScore() + " Lives : " + ninja.getLives(), 10, 30, Color.BLACK);
         }
@@ -58,7 +68,7 @@ public class LevelOne extends World {
             for (int i = 0; i < 4; i++) {
                 int r = (int) (Math.random() * tiles.length);
                 int c = (int) (Math.random() * tiles[r].length);
-                if (tiles [r][c] == "") {
+                if (tiles [r][c] == "" && c != 4) {
                     tiles[r][c] = "star";
                 }
                 else {
@@ -83,17 +93,16 @@ public class LevelOne extends World {
             tiles[2][4] = "ninja";            
         }
         
-        public void clearWorld() {
-            for (int i = 0; i < tiles.length; i++) {
-                for (int j = 0; j < tiles[i].length; j++) {
-                    tiles[i][j] = "";
-                }
-            }
-            
-            buildWorld();
+        public void makeLaddersMove() {
+            ladder1.makeMove();
+            ladder2.makeMove();
+            ladder3.makeMove();
         }
         
         public void act() {
-            
+            if (MyMayflower.isPassed()) {
+                makeLaddersMove();
+                MyMayflower.changePass();
+            }
         }
 }

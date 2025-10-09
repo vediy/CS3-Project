@@ -16,6 +16,10 @@ public class Ladder extends Actor
     public void makeMove() {
         needsMove = true;
     }
+    
+    public boolean isMoving() {
+        return needsMove;
+    }
 
     public void act() {
         if (needsMove) {

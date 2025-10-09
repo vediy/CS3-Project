@@ -14,9 +14,6 @@ public class Ninja extends MovableAnimatedActor
     private Animation jumpLeft;
     private Animation climbRight;
     private Animation climbLeft;
-    private Ladder ladder1;
-    private Ladder ladder2;
-    private SpecialLadder ladder3;
     
     private int score;
     private int lives;
@@ -25,14 +22,6 @@ public class Ninja extends MovableAnimatedActor
     {
         score = 0;
         lives = 5;
-        
-        ladder1 = new Ladder();
-        ladder2 = new Ladder();
-        ladder3 = new SpecialLadder();
-        World w = getWorld();
-        w.addObject(ladder1, 820, 200);
-        w.addObject(ladder2, 820, 100);
-        w.addObject(ladder3, 820, 0);
         
         // Below: creates the animation arrays for all possible animations to be used for the Ninja
         
@@ -164,19 +153,8 @@ public class Ninja extends MovableAnimatedActor
         score += amount;
         updateText();
         
-        World w = getWorld();
         if (score >= 5) {
-            ladder1.makeMove();
-            ladder2.makeMove();
-            ladder3.makeMove();
-            /**for (int i = 0; i < 3; i++) {
-                if (i == 0) {
-                    w.addObject(new SpecialLadder(), 820, i*100);
-                }
-                else {
-                    w.addObject(new Ladder(), 820, i*100);
-                }
-            }*/
+            MyMayflower.changePass();
         }
     }
     
